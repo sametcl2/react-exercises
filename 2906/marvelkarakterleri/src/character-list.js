@@ -1,16 +1,13 @@
 import React from 'react';
+import CharacterListItem from './character-list-item';
 
 function CharacterList(props){
-        const array=Array.from(props.character);
-        const listItems = array.map((item) => 
-            <li key={item.id}>{item.name}</li>
-        );
-        console.log(array)
+    const array = Array.from(props.character);
         return(
             <div className="col-md-4">
-                {<ul>{listItems}</ul>}
+                {array.map((item) => <CharacterListItem character={item} characterSelect={props.characterSelect} key={item.id}/>)}
             </div>
         );
-}
+}  
 
 export default CharacterList;

@@ -3,9 +3,7 @@ import './App.css';
 import SearchBar from './search-bar'
 import CharacterList from './character-list';
 import Details from './details';
-import CharacterDefaultItem from './character-list-item';
 import md5 from 'md5';
-import CharacterListItem from './character-list-item';
 
 const API_URL = 'https://gateway.marvel.com:443/v1/public/';
 const publicKey = '5054a2134e04c6cf53dc55d9abf48218';
@@ -18,8 +16,11 @@ class App extends React.Component {
   constructor(props){
     super(props);
     this.state={
-      character:''
+      character:'',
+      selectedCharacter:''
     }
+    this.getJSON=this.getJSON.bind(this);
+    this.handleCharacterSelect=this.handleCharacterSelect.bind(this);
   }
 
   componentDidMount = () => {
@@ -27,16 +28,24 @@ class App extends React.Component {
   }
 
   getJSON(){
-    let url = API_URL+'/characters?'+auth+'&limit=10';
+    let url = API_URL+'/characters?'+auth+'&limit=5';
     fetch(url)
     .then(response => {
       return response.json();
     })
     .then(json => {
       let characterler = json.data.results;
+      console.log(characterler)
       this.setState({
-        character:characterler,
+        character:characterler
       })
+    })
+  }
+
+  handleCharacterSelect = (character) => {
+    console.log(character)
+    this.setState({
+      selectedCharacter:character
     })
   }
 
@@ -44,9 +53,8 @@ class App extends React.Component {
     return(
       <div>
         <SearchBar/>
-        <CharacterList character={this.state.character}/>
-        <Details/>
-        <CharacterListItem character={this.state.character}/>
+        <CharacterList character={this.state.character} characterSelect={this.handleCharacterSelect}/>
+        <Details character={this.state.selectedCharacter}/>
       </div>
     );
   }
