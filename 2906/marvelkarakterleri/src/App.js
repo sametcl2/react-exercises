@@ -59,14 +59,15 @@ class App extends React.Component {
     })
     .then(json => {
       let characters=json.data.results;
-      console.log(term);
       this.setState({character: characters});
     })
+    .catch(console.log("hebele hübele"))
   }
 
   render(){
     return(
       <div>
+        <h4>Karakterler isimlerinin nasıl yazıldığına <a href="https://www.marvel.com/search">adresinden</a> bakabilirsiniz.</h4>
         <SearchBar onSearchButtonClicked={this.getSelectedCharacter}/>
         <CharacterList character={this.state.character} characterSelect={this.handleCharacterSelect}/>
         <Details character={this.state.selectedCharacter}/>
