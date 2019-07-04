@@ -1,11 +1,9 @@
 import React from 'react';
 
 function Details(props){
-    const { character } = props;
-    const array = Array.from(props.character);
-    console.log(character)
+    const  character  = props.character;
+    
     if(!character) return null;
-   
     return (
         <div className="col-md-8">
         <div className="details">
@@ -13,7 +11,7 @@ function Details(props){
             <div className="col-md-12">
               <h1>
                 {character.name}
-                <hr />
+                <hr/>
               </h1>
             </div>
             <div className="col-md-5">
@@ -25,9 +23,7 @@ function Details(props){
             <div className="col-md-7">
               <p>{character.description}</p>
               <h4>Comics({character.series.available})</h4>
-              <ul>
-                {array.map((item) => <li>{item.series.avaible.items}</li>)}
-              </ul>
+              <h2>LOREM IPSUM DOLOR SIT AMET</h2>
             </div>
           </div>
         </div>

@@ -20,7 +20,8 @@ class App extends React.Component {
       selectedCharacter:''
     }
     this.getJSON=this.getJSON.bind(this);
-    this.handleCharacterSelect=this.handleCharacterSelect.bind(this);
+    this.handleCharacterSelect=this.handleCharacterSelect.bind(this);   //  BIND İŞLEMLERİ 
+    this.getSelectedCharacter=this.getSelectedCharacter.bind(this);
   }
 
   componentDidMount = () => {
@@ -28,7 +29,7 @@ class App extends React.Component {
   }
 
   getJSON(){
-    let url = API_URL+'/characters?'+auth+'&limit=5';
+    const url = API_URL+'/characters?'+auth+'&limit=5';
     fetch(url)
     .then(response => {
       return response.json();
@@ -42,17 +43,31 @@ class App extends React.Component {
     })
   }
 
-  handleCharacterSelect = (character) => {
+  handleCharacterSelect(character){
     console.log(character)
     this.setState({
       selectedCharacter:character
     })
   }
 
+  getSelectedCharacter(term){
+    const url = API_URL+"/characters?"+auth+"&limit=5&nameStartsWith="+term;
+    
+    fetch(url)
+    .then(response => {
+      return response.json();
+    })
+    .then(json => {
+      let characters=json.data.results;
+      console.log(term);
+      this.setState({character: characters});
+    })
+  }
+
   render(){
     return(
       <div>
-        <SearchBar/>
+        <SearchBar onSearchButtonClicked={this.getSelectedCharacter}/>
         <CharacterList character={this.state.character} characterSelect={this.handleCharacterSelect}/>
         <Details character={this.state.selectedCharacter}/>
       </div>
