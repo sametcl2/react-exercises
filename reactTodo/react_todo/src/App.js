@@ -8,32 +8,38 @@ class App extends React.Component{
     super(props);
     this.state = {
       todo: '',
-      todos: [],
+      todos: ['ekmek al', 'su al'],
     }
   }
   
   render(){
-    const handleClick = () => {
-      this.setState({
-        todos: [...this.state.todos, this.state.todo],
-        todo: '',
-      });
+    const handleClick = e => {
+      e.preventDefault();
+      if(this.state.todo !== '') {
+        this.setState({
+          todos: [...this.state.todos, this.state.todo],  
+          todo: '',
+        });
+      }
     }
     
     const setTodo = e => {
       this.setState({
-        todo: e.target.value,  
+        todo: e.target.value,
       })
-      console.log(this.state.todo)
+    }
+
+    const deleteTodo = todo => {
+      this.setState({
+        todos: this.state.todos.includes(todo) ? this.state.todos.filter(item => !item.match(todo)) : this.state.todos
+      })
     }
 
     return (
       <div>
           <Navbar/>
-          <Input
-           setTodo={setTodo}
-           handleClick={handleClick}
-          />
+          <Input setTodo={setTodo} handleClick={handleClick} />
+          <Todos todos={this.state.todos} deleteTodo={deleteTodo} />
       </div>
     );
   }
