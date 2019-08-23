@@ -8,7 +8,7 @@ class App extends React.Component{
     super(props);
     this.state = {
       todo: '',
-      todos: ['ekmek al', 'su al'],
+      todos: JSON.parse(localStorage.getItem('todos')), 
     }
   }
   
@@ -19,12 +19,12 @@ class App extends React.Component{
         this.setState({
           todos: [...this.state.todos, this.state.todo],  
           todo: '',
-        });
+        }, () => localStorage.setItem('todos', JSON.stringify(this.state.todos))); // setState param olarak callback func alabilir(miş).
       }
     }
     
     const setTodo = e => {
-      this.setState({
+      this.setState({   
         todo: e.target.value,
       })
     }
@@ -32,7 +32,7 @@ class App extends React.Component{
     const deleteTodo = todo => {
       this.setState({
         todos: this.state.todos.includes(todo) ? this.state.todos.filter(item => !item.match(todo)) : this.state.todos
-      })
+      }, () => localStorage.setItem('todos', JSON.stringify(this.state.todos)))
     }
 
     return (
