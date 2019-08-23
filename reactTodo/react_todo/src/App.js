@@ -8,10 +8,16 @@ class App extends React.Component{
     super(props);
     this.state = {
       todo: '',
-      todos: JSON.parse(localStorage.getItem('todos')), 
+      todos: JSON.parse(localStorage.getItem('todos'))
     }
   }
   
+  componentWillMount() {
+    if(JSON.parse(localStorage.getItem('todos') === null)) {
+      localStorage.setItem('todos', '');
+    }
+  }
+
   render(){
     const handleClick = e => {
       e.preventDefault();
@@ -19,7 +25,7 @@ class App extends React.Component{
         this.setState({
           todos: [...this.state.todos, this.state.todo],  
           todo: '',
-        }, () => localStorage.setItem('todos', JSON.stringify(this.state.todos))); // setState param olarak callback func alabilir(miş).
+        }, () => localStorage.setItem('todos', JSON.stringify(this.state.todos)));   // setState param olarak callback func alabilir(miş).
       }
     }
     
@@ -38,7 +44,7 @@ class App extends React.Component{
     return (
       <div>
           <Navbar/>
-          <Input setTodo={setTodo} handleClick={handleClick} />
+          <Input setTodo={setTodo} handleClick={handleClick} value={this.state.todo}/>
           <Todos todos={this.state.todos} deleteTodo={deleteTodo} />
       </div>
     );

@@ -9,6 +9,7 @@ const Input = (props) => {
           className="form-control"
           placeholder="Todo"
           onChange={props.setTodo}
+          value={props.value}
         />
         <div className="input-group-append">
           <button
