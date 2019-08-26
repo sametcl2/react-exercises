@@ -1,11 +1,11 @@
 import React from "react";
 import Book from "./book";
-import img from "./img.png"
+import img from "../img.png"
 
 const Books = (props) => {
     return(
-        <div className="d-flex justify-content-center mt-5 w-50">
-          <ul className="list-group">
+        <div className="d-flex justify-content-center mt-5">
+          <ul className="list-group w-50">
             {
               props.data.items.map((item, index) =>
                 <li className="list-group-item" key={index}>

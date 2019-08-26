@@ -30,6 +30,7 @@ export default class App extends Component {
         .then(json => 
           this.setState({
             json,
+            name: ''
           }, () => console.log(this.state.json))  
         );
     }
