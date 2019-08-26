@@ -1,5 +1,6 @@
 import React from "react";
 import Book from "./book";
+import img from "./img.png"
 
 const Books = (props) => {
     return(
@@ -11,13 +12,14 @@ const Books = (props) => {
                   {
                     <Book 
                       title={item.volumeInfo.title}
-                      subtitle={typeof item.searchInfo.textSnippet !== 'undefined' ? item.searchInfo.textSnippet : 'no information'}
-                      img={typeof item.volumeInfo.imageLinks.thumbnail !== 'undefined' ? item.volumeInfo.imageLinks.thumbnail : 'no image'}
+                      subtitle={item.hasOwnProperty('searchInfo') ? item.searchInfo.textSnippet : ''}
+                      subtitle2={item.volumeInfo.hasOwnProperty('subtitle') ? item.volumeInfo.subtitle : ''}
+                      img={item.volumeInfo.hasOwnProperty('imageLinks') ? item.volumeInfo.imageLinks.thumbnail : img}
                       alt={item.volumeInfo.title}
-                      publisher={typeof item.volumeInfo.publisher !== 'undefined' ? item.volumeInfo.publisher : 'no information'}
-                      publishedDate={typeof item.volumeInfo.publishedDate !== 'undefined' ? item.volumeInfo.publishedDate: 'no information'}
-                      author={typeof item.volumeInfo.author !== 'undefined' ? item.volumeInfo.author[0] : 'no information'}
-                      pageCount={typeof item.volumeInfo.pageCount !== 'undefined' ? item.volumeInfo.pageCount : 'no information'}
+                      publisher={ item.volumeInfo.hasOwnProperty('publisher')  ? item.volumeInfo.publisher : 'Yayınevi bilgisi yok'}
+                      publishedDate={item.volumeInfo.hasOwnProperty('publishedDate') ? item.volumeInfo.publishedDate: 'Yayın tarihi bilgisi yok'}
+                      author={item.volumeInfo.hasOwnProperty('authors') ? item.volumeInfo.authors[0] : 'Yazar bilgisi yok'}
+                      pageCount={item.volumeInfo.hasOwnProperty('pageCount') ? item.volumeInfo.pageCount : 'Sayfa bilgisi yok'}
                     />
                   }
                 </li>
