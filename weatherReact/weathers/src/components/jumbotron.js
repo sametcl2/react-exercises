@@ -14,8 +14,8 @@ const Jumbotron = (props) => {
                         </div>
                         <div>
                             <i
-                                className={`owi owi-${props.data.weather[0].icon}`}
-                                style={{fontSize: 60}}
+                                className={`owi owi-${props.data.weather[0].icon}`} //README' DE BAHSEDİLEN KÜTÜPHANE KULLANILDI
+                                style={{fontSize: 65}}
                             />
                         </div>
                     </div>  
@@ -24,7 +24,7 @@ const Jumbotron = (props) => {
                         name:props.data.name
                     }}>
                         <button
-                            className="btn btn-primary w-100 mt-4"
+                            className="btn btn-primary w-100 mt-5"
                             type="button"> Next 4 days
                         </button> 
                     </Link>            
