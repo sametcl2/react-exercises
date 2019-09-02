@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import 'open-weather-icons'
 
 const Jumbotron = (props) => {
         return(
@@ -14,7 +13,10 @@ const Jumbotron = (props) => {
                             <h5>{props.data.main.temp + " Celcius"}</h5>
                         </div>
                         <div>
-                            <img src={`http://openweathermap.org/img/w/owi-${props.data.weather[0].icon}.png`} alt="icon"/>
+                            <i
+                                className={`owi owi-${props.data.weather[0].icon}`}
+                                style={{fontSize: 60}}
+                            />
                         </div>
                     </div>  
                     <Link to={{

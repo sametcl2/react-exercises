@@ -32,9 +32,9 @@ class OtherDays extends React.Component {
                     this.state.forecast !== '' &&
                     <div className="card-deck mt-5">
                         <div className="card">
-                            <img
-                                src={`http://openweathermap.org/img/w/${this.state.forecast.list[12].weather[0].icon}.png`}
-                                className="card-img-top" alt="..."
+                            <i
+                                className={`owi owi-${this.state.forecast.list[12].weather[0].icon} d-flex justify-content-center my-3`}
+                                style={{fontSize: 100}}
                             />
                             <div className="card-body">
                                 <h3 className="card-title">
@@ -51,9 +51,9 @@ class OtherDays extends React.Component {
                             </div>
                         </div>
                         <div className="card">
-                            <img
-                                src={`http://openweathermap.org/img/w/${this.state.forecast.list[20].weather[0].icon}.png`}
-                                className="card-img-top" alt="..."
+                            <i
+                                className={`owi owi-${this.state.forecast.list[20].weather[0].icon} d-flex justify-content-center my-3`}
+                                style={{fontSize: 100}}
                             />
                             <div className="card-body">
                                 <h3 className="card-title">
@@ -70,9 +70,9 @@ class OtherDays extends React.Component {
                             </div>
                         </div>
                         <div className="card">
-                            <img
-                                src={`http://openweathermap.org/img/w/${this.state.forecast.list[28].weather[0].icon}.png`}
-                                className="card-img-top" alt="..."
+                            <i
+                                className={`owi owi-${this.state.forecast.list[28].weather[0].icon} d-flex justify-content-center my-3`}
+                                style={{fontSize: 100}}
                             />
                             <div className="card-body">
                                 <h3 className="card-title">
@@ -89,9 +89,9 @@ class OtherDays extends React.Component {
                             </div>
                         </div>
                         <div className="card">
-                            <img
-                                src={`http://openweathermap.org/img/w/${this.state.forecast.list[36].weather[0].icon}.png`}
-                                className="card-img-top" alt="..."
+                            <i
+                                className={`owi owi-${this.state.forecast.list[36].weather[0].icon} d-flex justify-content-center my-3`}
+                                style={{fontSize: 100}}
                             />
                             <div className="card-body">
                                 <h3 className="card-title">

@@ -26,6 +26,7 @@ class App extends Component{
       this.setState({
         data: json
       });
+      console.log(json);
     }
     
     render(){  

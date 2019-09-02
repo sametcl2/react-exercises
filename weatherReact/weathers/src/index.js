@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import 'open-weather-icons/dist/css/open-weather-icons.css'
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
